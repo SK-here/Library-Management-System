@@ -1,0 +1,28 @@
+version: '3'
+services:
+  # MySQL database container
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: library_mgmt
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+    networks:
+      - app_network
+
+  # Python application container
+  app:
+    build: .
+    depends_on:
+      - mysql
+    volumes:
+      - ./login.py:/app/login.py
+    networks:
+      - app_network
+
+networks:
+  app_network:
+
