@@ -8,7 +8,7 @@ WORKDIR /app
 COPY login.py .
 COPY Library-Management-Dashboard.py .
 COPY library_background.png .
-COPY requirements.txt
+COPY requirements.txt .
 
 # Install any necessary dependencies
 # For example, if you need MySQL client libraries:
